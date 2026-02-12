@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-export function useD3Loader(): { loaded: boolean; error: Error | null } {
+export function useD3Loader(radarVersion: string = '0.12'): { loaded: boolean; error: Error | null } {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -31,6 +31,8 @@ export function useD3Loader(): { loaded: boolean; error: Error | null } {
         setLoaded(true);
       }
     };
+
+    const radarScriptUrl = `https://zalando.github.io/tech-radar/release/radar-${radarVersion}.js`;
 
     // Load D3.js if not already present
     if (!d3Loaded) {
@@ -56,7 +58,7 @@ export function useD3Loader(): { loaded: boolean; error: Error | null } {
         const script = document.createElement('script');
         script.src = 'https://d3js.org/d3.v7.min.js';
         script.async = true;
-        script.crossOrigin = 'anonymous';
+        // Removed crossOrigin to avoid CORS issues with script tags
         script.onload = () => {
           d3Loaded = true;
           checkAllLoaded();
@@ -70,7 +72,7 @@ export function useD3Loader(): { loaded: boolean; error: Error | null } {
     // Load Zalando radar.js if not already present
     if (!radarLoaded) {
       const radarScript = document.querySelector(
-        'script[src="https://zalando.github.io/tech-radar/release/radar-0.12.js"]'
+        `script[src="${radarScriptUrl}"]`
       ) as HTMLScriptElement | null;
 
       if (radarScript) {
@@ -89,10 +91,9 @@ export function useD3Loader(): { loaded: boolean; error: Error | null } {
       } else {
         // Create and load Zalando radar script
         const script = document.createElement('script');
-        script.src =
-          'https://zalando.github.io/tech-radar/release/radar-0.12.js';
+        script.src = radarScriptUrl;
         script.async = true;
-        script.crossOrigin = 'anonymous';
+        // Removed crossOrigin to avoid CORS issues with script tags
         script.onload = () => {
           radarLoaded = true;
           checkAllLoaded();
@@ -121,7 +122,7 @@ export function useD3Loader(): { loaded: boolean; error: Error | null } {
     return () => {
       clearTimeout(timeout);
     };
-  }, []);
+  }, [radarVersion]);
 
   return { loaded, error };
 }

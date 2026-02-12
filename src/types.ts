@@ -34,6 +34,7 @@ export interface PluginOptions {
   radarFile: string;
   width?: number;
   height?: number;
+  radarVersion?: string;
   colors?: {
     background?: string;
     grid?: string;
@@ -54,4 +55,5 @@ export interface TechRadarProps {
 
 export interface PluginContent {
   radarData: RadarData;
+  radarVersion: string;
 }

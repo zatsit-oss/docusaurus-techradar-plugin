@@ -6,6 +6,7 @@ interface RadarViewProps {
   data: RadarData;
   width?: number;
   height?: number;
+  radarVersion?: string;
   onEntryClick?: (entry: { label: string; link?: string }) => void;
   colors?: {
     background?: string;
@@ -18,11 +19,12 @@ export function RadarView({
   data,
   width = 1450,
   height = 1000,
+  radarVersion = '0.12',
   onEntryClick,
   colors,
 }: RadarViewProps) {
   const svgRef = useRef<HTMLDivElement>(null);
-  const { loaded, error } = useD3Loader();
+  const { loaded, error } = useD3Loader(radarVersion);
 
   useEffect(() => {
     if (!loaded || !svgRef.current || !data) {

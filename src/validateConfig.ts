@@ -3,10 +3,12 @@ import type { PluginOptions } from './types';
 
 const DEFAULT_WIDTH = 1450;
 const DEFAULT_HEIGHT = 1000;
+const DEFAULT_RADAR_VERSION = '0.12';
 
 export const DEFAULT_OPTIONS: Partial<PluginOptions> = {
   width: DEFAULT_WIDTH,
   height: DEFAULT_HEIGHT,
+  radarVersion: DEFAULT_RADAR_VERSION,
   colors: {
     background: '#fff',
     grid: '#bbb',
@@ -18,6 +20,7 @@ const PluginOptionsSchema = Joi.object<PluginOptions>({
   radarFile: Joi.string().required(),
   width: Joi.number().integer().min(400).max(3000).default(DEFAULT_WIDTH),
   height: Joi.number().integer().min(400).max(3000).default(DEFAULT_HEIGHT),
+  radarVersion: Joi.string().default(DEFAULT_RADAR_VERSION),
   colors: Joi.object({
     background: Joi.string().optional(),
     grid: Joi.string().optional(),

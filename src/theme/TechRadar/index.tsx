@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { TechRadarProps, RadarEntry } from '../../types';
 import { useRadarData } from '../hooks/useRadarData';
+import { usePluginData } from '../hooks/usePluginData';
 import { RadarView } from './RadarView';
 import { Modal } from './Modal';
 import styles from './styles.module.css';
@@ -12,6 +13,8 @@ export default function TechRadar({
   colors,
 }: TechRadarProps) {
   const { data, loading, error } = useRadarData(source);
+  const pluginData = usePluginData();
+  const radarVersion = pluginData.options.radarVersion || '0.12';
   const [selectedEntry, setSelectedEntry] = useState<RadarEntry | null>(null);
 
   const handleEntryClick = (entry: { label: string; link?: string }) => {
@@ -57,6 +60,7 @@ export default function TechRadar({
         data={data}
         width={width}
         height={height}
+        radarVersion={radarVersion}
         colors={colors}
         onEntryClick={handleEntryClick}
       />

@@ -6,9 +6,11 @@ import __node_cjsPath from 'node:path';
 
 const DEFAULT_WIDTH = 1450;
 const DEFAULT_HEIGHT = 1000;
+const DEFAULT_RADAR_VERSION = '0.12';
 const DEFAULT_OPTIONS = {
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT,
+    radarVersion: DEFAULT_RADAR_VERSION,
     colors: {
         background: '#fff',
         grid: '#bbb',
@@ -19,6 +21,7 @@ const PluginOptionsSchema = Joi.object({
     radarFile: Joi.string().required(),
     width: Joi.number().integer().min(400).max(3000).default(DEFAULT_WIDTH),
     height: Joi.number().integer().min(400).max(3000).default(DEFAULT_HEIGHT),
+    radarVersion: Joi.string().default(DEFAULT_RADAR_VERSION),
     colors: Joi.object({
         background: Joi.string().optional(),
         grid: Joi.string().optional(),
@@ -100,7 +103,8 @@ function pluginTechRadar(context, options) {
         async loadContent () {
             const radarData = await loadRadarData(validatedOptions.radarFile, context.siteDir);
             return {
-                radarData
+                radarData,
+                radarVersion: validatedOptions.radarVersion || '0.12'
             };
         },
         async contentLoaded ({ content, actions }) {

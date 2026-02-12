@@ -21,7 +21,10 @@ export default function pluginTechRadar(
         validatedOptions.radarFile,
         context.siteDir
       );
-      return { radarData };
+      return { 
+        radarData,
+        radarVersion: validatedOptions.radarVersion || '0.12',
+      };
     },
 
     async contentLoaded({ content, actions }) {

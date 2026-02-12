@@ -22,6 +22,7 @@ const mockData: TechRadarPluginData = {
     radarFile: '',
     width: 1450,
     height: 1000,
+    radarVersion: '0.12',
   },
 };
 

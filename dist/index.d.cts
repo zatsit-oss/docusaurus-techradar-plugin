@@ -24,6 +24,7 @@ interface PluginOptions {
     radarFile: string;
     width?: number;
     height?: number;
+    radarVersion?: string;
     colors?: {
         background?: string;
         grid?: string;
@@ -42,6 +43,7 @@ interface TechRadarProps {
 }
 interface PluginContent {
     radarData: RadarData;
+    radarVersion: string;
 }
 
 declare function pluginTechRadar(context: LoadContext, options: Partial<PluginOptions>): Plugin<PluginContent>;

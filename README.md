@@ -36,6 +36,7 @@ module.exports = {
         radarFile: './data/tech-radar.json', // Required
         width: 1450,                          // Optional, default: 1450
         height: 1000,                         // Optional, default: 1000
+        radarVersion: '0.12',                 // Optional, default: '0.12'
         colors: {                             // Optional
           background: '#fff',
           grid: '#bbb',
@@ -216,6 +217,7 @@ Override colors per component:
 | `radarFile` | string | Required | Path to the radar JSON file |
 | `width` | number | 1450 | Width of the radar visualization |
 | `height` | number | 1000 | Height of the radar visualization |
+| `radarVersion` | string | '0.12' | Zalando radar.js version to load from CDN |
 | `colors.background` | string | '#fff' | Background color |
 | `colors.grid` | string | '#bbb' | Grid lines color |
 | `colors.inactive` | string | '#ddd' | Inactive elements color |
