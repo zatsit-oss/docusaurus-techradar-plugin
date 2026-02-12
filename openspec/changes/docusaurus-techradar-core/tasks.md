@@ -1,94 +1,94 @@
 ## 1. Setup Project Structure
 
-- [ ] 1.1 Configurer package.json comme plugin Docusaurus (main, types, keywords, peerDependencies)
-- [ ] 1.2 Créer structure de dossiers src/ (index.ts, types.ts, theme/, hooks/)
-- [ ] 1.3 Ajouter peer dependencies (@docusaurus/types, @docusaurus/utils, @docusaurus/utils-validation)
-- [ ] 1.4 Configurer tsconfig.json pour exports multiples (ESM + CJS)
+- [x] 1.1 Configurer package.json comme plugin Docusaurus (main, types, keywords, peerDependencies)
+- [x] 1.2 Créer structure de dossiers src/ (index.ts, types.ts, theme/, hooks/)
+- [x] 1.3 Ajouter peer dependencies (@docusaurus/types, @docusaurus/utils, @docusaurus/utils-validation)
+- [x] 1.4 Configurer tsconfig.json pour exports multiples (ESM + CJS)
 
 ## 2. Types et Validation
 
-- [ ] 2.1 Définir types TypeScript dans src/types.ts (PluginOptions, RadarData, RadarEntry, etc.)
-- [ ] 2.2 Créer schema Joi pour validation options plugin dans src/validateConfig.ts
-- [ ] 2.3 Créer schema Joi pour validation données radar (RadarDataSchema)
-- [ ] 2.4 Implémenter fonction de merge des configs (defaults + plugin + props)
+- [x] 2.1 Définir types TypeScript dans src/types.ts (PluginOptions, RadarData, RadarEntry, etc.)
+- [x] 2.2 Créer schema Joi pour validation options plugin dans src/validateConfig.ts
+- [x] 2.3 Créer schema Joi pour validation données radar (RadarDataSchema)
+- [x] 2.4 Implémenter fonction de merge des configs (defaults + plugin + props)
 
 ## 3. Plugin Lifecycle
 
-- [ ] 3.1 Implémenter fonction plugin principale dans src/index.ts
-- [ ] 3.2 Implémenter hook loadContent() pour charger et valider radarFile
-- [ ] 3.3 Implémenter hook contentLoaded() pour injecter données via setGlobalData
-- [ ] 3.4 Implémenter getThemePath() pour exposer src/theme
-- [ ] 3.5 Créer module client src/loadD3.js pour chargement D3.js CDN
-- [ ] 3.6 Implémenter getClientModules() pour retourner loadD3.js
+- [x] 3.1 Implémenter fonction plugin principale dans src/index.ts
+- [x] 3.2 Implémenter hook loadContent() pour charger et valider radarFile
+- [x] 3.3 Implémenter hook contentLoaded() pour injecter données via setGlobalData
+- [x] 3.4 Implémenter getThemePath() pour exposer src/theme
+- [x] 3.5 Créer module client src/loadD3.js pour chargement D3.js CDN
+- [x] 3.6 Implémenter getClientModules() pour retourner loadD3.js
 
 ## 4. Data Management
 
-- [ ] 4.1 Implémenter loadRadarData() dans src/loadRadarData.ts (support JSON et YAML)
-- [ ] 4.2 Ajouter gestion d'erreurs avec messages clairs (fichier manquant, JSON malformé, validation)
-- [ ] 4.3 Créer hook usePluginData() dans src/theme/hooks/usePluginData.ts
-- [ ] 4.4 Créer hook useRadarData(source?) dans src/theme/hooks/useRadarData.ts
-- [ ] 4.5 Gérer chargement custom source (fetch + validate client-side)
+- [x] 4.1 Implémenter loadRadarData() dans src/loadRadarData.ts (support JSON et YAML)
+- [x] 4.2 Ajouter gestion d'erreurs avec messages clairs (fichier manquant, JSON malformé, validation)
+- [x] 4.3 Créer hook usePluginData() dans src/theme/hooks/usePluginData.ts
+- [x] 4.4 Créer hook useRadarData(source?) dans src/theme/hooks/useRadarData.ts
+- [x] 4.5 Gérer chargement custom source (fetch + validate client-side)
 
 ## 5. D3.js Loading Hook
 
-- [ ] 5.1 Créer hook useD3Loader() dans src/theme/hooks/useD3Loader.ts
-- [ ] 5.2 Implémenter chargement asynchrone D3.js depuis CDN (https://d3js.org/d3.v7.min.js)
-- [ ] 5.3 Ajouter SSR guard (typeof window === 'undefined')
-- [ ] 5.4 Gérer état loaded et erreurs de chargement
-- [ ] 5.5 Cleanup script tag lors du unmount
+- [x] 5.1 Créer hook useD3Loader() dans src/theme/hooks/useD3Loader.ts
+- [x] 5.2 Implémenter chargement asynchrone D3.js depuis CDN (https://d3js.org/d3.v7.min.js)
+- [x] 5.3 Ajouter SSR guard (typeof window === 'undefined')
+- [x] 5.4 Gérer état loaded et erreurs de chargement
+- [x] 5.5 Cleanup script tag lors du unmount
 
 ## 6. Adapter Zalando radar.js
 
-- [ ] 6.1 Télécharger radar.js depuis repo Zalando (https://github.com/zalando/tech-radar)
-- [ ] 6.2 Copier dans src/theme/TechRadar/radar.ts
-- [ ] 6.3 Convertir en module ES6 (export function radar_visualization)
-- [ ] 6.4 Ajouter callback onEntryClick dans la config
-- [ ] 6.5 Modifier pour utiliser ID SVG fourni (ref React) au lieu de sélecteur fixe
-- [ ] 6.6 Remplacer couleurs hardcodées par CSS variables Infima
+- [x] 6.1 Télécharger radar.js depuis repo Zalando (https://github.com/zalando/tech-radar)
+- [x] 6.2 Copier dans src/theme/TechRadar/radar.ts
+- [x] 6.3 Convertir en module ES6 (export function radar_visualization)
+- [x] 6.4 Ajouter callback onEntryClick dans la config
+- [x] 6.5 Modifier pour utiliser ID SVG fourni (ref React) au lieu de sélecteur fixe
+- [x] 6.6 Remplacer couleurs hardcodées par CSS variables Infima
 
 ## 7. RadarView Component
 
-- [ ] 7.1 Créer composant RadarView dans src/theme/TechRadar/RadarView.tsx
-- [ ] 7.2 Utiliser useRef pour cibler le SVG
-- [ ] 7.3 Utiliser useD3Loader pour attendre chargement D3
-- [ ] 7.4 Implémenter useEffect pour appeler radar_visualization
-- [ ] 7.5 Passer callback onEntryClick à radar_visualization
-- [ ] 7.6 Implémenter cleanup D3 dans useEffect return
-- [ ] 7.7 Créer composant RadarLoader pour affichage pendant chargement
-- [ ] 7.8 Accepter props width, height, colors
+- [x] 7.1 Créer composant RadarView dans src/theme/TechRadar/RadarView.tsx
+- [x] 7.2 Utiliser useRef pour cibler le SVG
+- [x] 7.3 Utiliser useD3Loader pour attendre chargement D3
+- [x] 7.4 Implémenter useEffect pour appeler radar_visualization
+- [x] 7.5 Passer callback onEntryClick à radar_visualization
+- [x] 7.6 Implémenter cleanup D3 dans useEffect return
+- [x] 7.7 Créer composant RadarLoader pour affichage pendant chargement
+- [x] 7.8 Accepter props width, height, colors
 
 ## 8. Modal/Drawer Component
 
-- [ ] 8.1 Créer composant Modal dans src/theme/TechRadar/Modal.tsx
-- [ ] 8.2 Utiliser createPortal pour render vers document.body
-- [ ] 8.3 Implémenter structure backdrop + drawer
-- [ ] 8.4 Créer animations CSS slide depuis droite (slideIn, slideOut)
-- [ ] 8.5 Gérer fermeture via bouton close, backdrop click, touche Escape
-- [ ] 8.6 Bloquer scroll du body quand modal ouvert (overflow: hidden)
-- [ ] 8.7 Afficher métadonnées de l'entrée (label, ring, quadrant, status)
-- [ ] 8.8 Afficher bouton lien documentation si entry.link présent
-- [ ] 8.9 Ajouter ARIA attributes (role="dialog", aria-modal, aria-labelledby)
+- [x] 8.1 Créer composant Modal dans src/theme/TechRadar/Modal.tsx
+- [x] 8.2 Utiliser createPortal pour render vers document.body
+- [x] 8.3 Implémenter structure backdrop + drawer
+- [x] 8.4 Créer animations CSS slide depuis droite (slideIn, slideOut)
+- [x] 8.5 Gérer fermeture via bouton close, backdrop click, touche Escape
+- [x] 8.6 Bloquer scroll du body quand modal ouvert (overflow: hidden)
+- [x] 8.7 Afficher métadonnées de l'entrée (label, ring, quadrant, status)
+- [x] 8.8 Afficher bouton lien documentation si entry.link présent
+- [x] 8.9 Ajouter ARIA attributes (role="dialog", aria-modal, aria-labelledby)
 
 ## 9. Main TechRadar Component
 
-- [ ] 9.1 Créer composant principal dans src/theme/TechRadar/index.tsx
-- [ ] 9.2 Définir props interface (source, width, height, onEntryClick)
-- [ ] 9.3 Utiliser hooks useRadarData et useD3Loader
-- [ ] 9.4 Gérer state local (selectedEntry)
-- [ ] 9.5 Implémenter TechRadarLoader pour état loading
-- [ ] 9.6 Implémenter TechRadarError pour état error
-- [ ] 9.7 Orchestrer RadarView + Modal
-- [ ] 9.8 Gérer callback handleEntryClick
+- [x] 9.1 Créer composant principal dans src/theme/TechRadar/index.tsx
+- [x] 9.2 Définir props interface (source, width, height, onEntryClick)
+- [x] 9.3 Utiliser hooks useRadarData et useD3Loader
+- [x] 9.4 Gérer state local (selectedEntry)
+- [x] 9.5 Implémenter TechRadarLoader pour état loading
+- [x] 9.6 Implémenter TechRadarError pour état error
+- [x] 9.7 Orchestrer RadarView + Modal
+- [x] 9.8 Gérer callback handleEntryClick
 - [ ] 9.9 Wrapper dans Error Boundary
 
 ## 10. Styling
 
-- [ ] 10.1 Créer styles.module.css dans src/theme/TechRadar/
-- [ ] 10.2 Utiliser CSS variables Infima pour couleurs et spacing
-- [ ] 10.3 Implémenter styles modal/drawer avec animations
-- [ ] 10.4 Supporter dark mode via [data-theme='dark']
-- [ ] 10.5 Styles responsive basiques (full width sur mobile)
-- [ ] 10.6 Styles loader et error states
+- [x] 10.1 Créer styles.module.css dans src/theme/TechRadar/
+- [x] 10.2 Utiliser CSS variables Infima pour couleurs et spacing
+- [x] 10.3 Implémenter styles modal/drawer avec animations
+- [x] 10.4 Supporter dark mode via [data-theme='dark']
+- [x] 10.5 Styles responsive basiques (full width sur mobile)
+- [x] 10.6 Styles loader et error states
 
 ## 11. Tests - Plugin Lifecycle
 

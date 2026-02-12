@@ -1,0 +1,144 @@
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Drawer */
+.drawer {
+  background: var(--ifm-background-surface-color);
+  width: 480px;
+  max-width: 90vw;
+  height: 100%;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 300ms ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Dark mode support */
+[data-theme='dark'] .drawer {
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Drawer Header */
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.drawerTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--ifm-font-color-base);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ifm-color-emphasis-600);
+  padding: 0.5rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: var(--ifm-color-emphasis-800);
+}
+
+/* Drawer Content */
+.drawerContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
+}
+
+/* Metadata Grid */
+.metadataGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.metadataItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metadataLabel {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-600);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metadataValue {
+  font-size: 1rem;
+  color: var(--ifm-font-color-base);
+}
+
+/* Link Section */
+.linkSection {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.docLink {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--ifm-button-border-radius);
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.docLink:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: white;
+  text-decoration: none;
+}
+
+/* Tech Radar Container */
+.techRadarContainer {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.techRadarLoader,
+.techRadarError {
+  padding: 2rem;
+  text-align: center;
+}
+
+.techRadarError {
+  color: var(--ifm-color-danger);
+}
