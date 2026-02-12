@@ -87,7 +87,11 @@ Create a JSON file (e.g., `data/tech-radar.json`) with your radar data:
 
 ### 3. Use in Your Pages
 
-Import and use the component in your MDX files:
+There are two ways to use the TechRadar component:
+
+**Option 1: Via Docusaurus Theme (Recommended)**
+
+Import from the theme namespace (available after plugin is configured):
 
 ```mdx
 ---
@@ -95,6 +99,22 @@ title: Our Tech Radar
 ---
 
 import TechRadar from '@theme/TechRadar';
+
+# Our Technology Choices
+
+<TechRadar />
+```
+
+**Option 2: Direct Import**
+
+Import directly from the package:
+
+```mdx
+---
+title: Our Tech Radar
+---
+
+import TechRadar from 'docusaurus-techradar-plugin/TechRadar';
 
 # Our Technology Choices
 

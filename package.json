@@ -27,6 +27,7 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./TechRadar": "./src/theme/TechRadar/index.tsx",
     "./package.json": "./package.json"
   },
   "files": [
