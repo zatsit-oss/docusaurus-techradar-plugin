@@ -1,0 +1,118 @@
+{
+  "title": "Example Tech Radar 2026",
+  "quadrants": [
+    { "name": "Languages & Frameworks" },
+    { "name": "Tools" },
+    { "name": "Platforms" },
+    { "name": "Techniques" }
+  ],
+  "rings": [
+    { "name": "ADOPT", "color": "#5ba300" },
+    { "name": "TRIAL", "color": "#009eb0" },
+    { "name": "ASSESS", "color": "#c7ba00" },
+    { "name": "HOLD", "color": "#e09b96" }
+  ],
+  "entries": [
+    {
+      "label": "React",
+      "quadrant": 0,
+      "ring": 0,
+      "moved": 0,
+      "link": "https://react.dev"
+    },
+    {
+      "label": "TypeScript",
+      "quadrant": 0,
+      "ring": 0,
+      "moved": 1,
+      "link": "https://www.typescriptlang.org"
+    },
+    {
+      "label": "Vue.js",
+      "quadrant": 0,
+      "ring": 1,
+      "moved": 0,
+      "link": "https://vuejs.org"
+    },
+    {
+      "label": "Svelte",
+      "quadrant": 0,
+      "ring": 2,
+      "moved": 2,
+      "link": "https://svelte.dev"
+    },
+    {
+      "label": "Docker",
+      "quadrant": 1,
+      "ring": 0,
+      "moved": 0,
+      "link": "https://www.docker.com"
+    },
+    {
+      "label": "Kubernetes",
+      "quadrant": 1,
+      "ring": 0,
+      "moved": 1,
+      "link": "https://kubernetes.io"
+    },
+    {
+      "label": "GitHub Actions",
+      "quadrant": 1,
+      "ring": 0,
+      "moved": 0,
+      "link": "https://github.com/features/actions"
+    },
+    {
+      "label": "Terraform",
+      "quadrant": 1,
+      "ring": 1,
+      "moved": 0,
+      "link": "https://www.terraform.io"
+    },
+    {
+      "label": "AWS",
+      "quadrant": 2,
+      "ring": 0,
+      "moved": 0,
+      "link": "https://aws.amazon.com"
+    },
+    {
+      "label": "Vercel",
+      "quadrant": 2,
+      "ring": 1,
+      "moved": 1,
+      "link": "https://vercel.com"
+    },
+    {
+      "label": "Cloudflare",
+      "quadrant": 2,
+      "ring": 1,
+      "moved": 2,
+      "link": "https://www.cloudflare.com"
+    },
+    {
+      "label": "Microservices",
+      "quadrant": 3,
+      "ring": 0,
+      "moved": 0
+    },
+    {
+      "label": "Event Sourcing",
+      "quadrant": 3,
+      "ring": 2,
+      "moved": 0
+    },
+    {
+      "label": "Domain-Driven Design",
+      "quadrant": 3,
+      "ring": 1,
+      "moved": 1
+    },
+    {
+      "label": "Micro Frontends",
+      "quadrant": 3,
+      "ring": 2,
+      "moved": 2
+    }
+  ]
+}

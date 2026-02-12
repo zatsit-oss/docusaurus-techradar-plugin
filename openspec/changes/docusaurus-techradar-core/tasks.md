@@ -98,6 +98,14 @@
 - [ ] 11.4 Tester contentLoaded injecte données via setGlobalData
 - [ ] 11.5 Tester validation config plugin (options valides/invalides)
 
+## 11. Tests - Plugin Lifecycle
+
+- [x] 11.1 Tester loadContent charge et valide JSON valide
+- [x] 11.2 Tester loadContent échoue avec JSON invalide (message clair)
+- [x] 11.3 Tester loadContent échoue avec fichier manquant
+- [x] 11.4 Tester contentLoaded injecte données via setGlobalData
+- [x] 11.5 Tester validation config plugin (options valides/invalides)
+
 ## 12. Tests - Hooks
 
 - [ ] 12.1 Tester useD3Loader charge D3 depuis CDN (mock)
@@ -121,17 +129,17 @@
 
 ## 14. Documentation
 
-- [ ] 14.1 Mettre à jour README.md avec installation et usage
-- [ ] 14.2 Documenter toutes les options de configuration
-- [ ] 14.3 Ajouter exemples d'usage (basic, multi-radar, custom config)
-- [ ] 14.4 Documenter format des données (JSON/YAML schema)
-- [ ] 14.5 Ajouter section troubleshooting (D3 ne charge pas, etc.)
-- [ ] 14.6 Créditer Zalando tech-radar avec lien et license
+- [x] 14.1 Mettre à jour README.md avec installation et usage
+- [x] 14.2 Documenter toutes les options de configuration
+- [x] 14.3 Ajouter exemples d'usage (basic, multi-radar, custom config)
+- [x] 14.4 Documenter format des données (JSON/YAML schema)
+- [x] 14.5 Ajouter section troubleshooting (D3 ne charge pas, etc.)
+- [x] 14.6 Créditer Zalando tech-radar avec lien et license
 
 ## 15. Build et Package
 
-- [ ] 15.1 Tester build avec `bun run build`
-- [ ] 15.2 Vérifier dist/ contient index.js, index.cjs, index.d.ts
-- [ ] 15.3 Vérifier exports package.json (ESM + CJS)
+- [x] 15.1 Tester build avec `npm run build`
+- [x] 15.2 Vérifier dist/ contient index.js, index.cjs, index.d.ts
+- [x] 15.3 Vérifier exports package.json (ESM + CJS)
 - [ ] 15.4 Tester installation locale dans un site Docusaurus test
 - [ ] 15.5 Valider que composant est accessible via @theme/TechRadar
