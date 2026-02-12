@@ -49,7 +49,7 @@ export function RadarView({
     try {
       // Call radar visualization from window
       (window.radar_visualization as any)({
-        svg: radarId,
+        svg_id: radarId,
         width,
         height,
         colors: colors || {
