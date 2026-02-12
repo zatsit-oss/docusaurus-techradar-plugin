@@ -17,6 +17,7 @@ export const DEFAULT_OPTIONS: Partial<PluginOptions> = {
 };
 
 const PluginOptionsSchema = Joi.object<PluginOptions>({
+  id: Joi.string().optional().default('default'), // Ajoutez cette ligne
   radarFile: Joi.string().required(),
   width: Joi.number().integer().min(400).max(3000).default(DEFAULT_WIDTH),
   height: Joi.number().integer().min(400).max(3000).default(DEFAULT_HEIGHT),
