@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import type { RadarData } from '../../types';
 import { useD3Loader } from '../hooks/useD3Loader';
-import { radar_visualization } from './radar';
 
 interface RadarViewProps {
   data: RadarData;
@@ -30,6 +29,12 @@ export function RadarView({
       return;
     }
 
+    // Check if radar_visualization is available
+    if (typeof window === 'undefined' || !window.radar_visualization) {
+      console.error('radar_visualization not available');
+      return;
+    }
+
     // Clear any existing SVG
     svgRef.current.innerHTML = '';
 
@@ -40,8 +45,8 @@ export function RadarView({
     svgRef.current.appendChild(svg);
 
     try {
-      // Call radar visualization
-      radar_visualization({
+      // Call radar visualization from window
+      (window.radar_visualization as any)({
         svg: radarId,
         width,
         height,
@@ -78,7 +83,7 @@ export function RadarView({
   if (error) {
     return (
       <div style={{ padding: '2rem', textAlign: 'center', color: '#d32f2f' }}>
-        <p>Failed to load D3.js: {error.message}</p>
+        <p>Failed to load dependencies: {error.message}</p>
         <p>Please check your internet connection and try again.</p>
       </div>
     );

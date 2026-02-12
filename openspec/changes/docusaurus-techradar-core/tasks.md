@@ -18,8 +18,8 @@
 - [x] 3.2 Implémenter hook loadContent() pour charger et valider radarFile
 - [x] 3.3 Implémenter hook contentLoaded() pour injecter données via setGlobalData
 - [x] 3.4 Implémenter getThemePath() pour exposer src/theme
-- [x] 3.5 Créer module client src/loadD3.js pour chargement D3.js CDN
-- [x] 3.6 Implémenter getClientModules() pour retourner loadD3.js
+- [x] 3.5 Load D3.js and radar.js directly in React component (useD3Loader hook)
+- [x] 3.6 Removed getClientModules() - scripts loaded on-demand in component
 
 ## 4. Data Management
 
@@ -37,14 +37,14 @@
 - [x] 5.4 Gérer état loaded et erreurs de chargement
 - [x] 5.5 Cleanup script tag lors du unmount
 
-## 6. Adapter Zalando radar.js
+## 6. Load Zalando radar.js from CDN
 
-- [x] 6.1 Télécharger radar.js depuis repo Zalando (https://github.com/zalando/tech-radar)
-- [x] 6.2 Copier dans src/theme/TechRadar/radar.ts
-- [x] 6.3 Convertir en module ES6 (export function radar_visualization)
-- [x] 6.4 Ajouter callback onEntryClick dans la config
-- [x] 6.5 Modifier pour utiliser ID SVG fourni (ref React) au lieu de sélecteur fixe
-- [x] 6.6 Remplacer couleurs hardcodées par CSS variables Infima
+- [x] 6.1 Load radar.js from Zalando CDN (https://zalando.github.io/tech-radar/release/radar-0.12.js)
+- [x] 6.2 Load via React hook instead of bundling locally
+- [x] 6.3 Use radar_visualization from window global
+- [x] 6.4 Support onEntryClick callback via entry_click config
+- [x] 6.5 Use dynamic SVG IDs for multiple radar instances
+- [x] 6.6 Support custom colors via config
 
 ## 7. RadarView Component
 

@@ -36,10 +36,6 @@ export default function pluginTechRadar(
       // Return path to theme folder
       return path.join(__dirname, 'theme');
     },
-
-    getClientModules() {
-      return [path.join(__dirname, 'loadD3.js')];
-    },
   };
 }
 

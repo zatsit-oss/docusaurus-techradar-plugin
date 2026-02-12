@@ -10,7 +10,8 @@ A Docusaurus plugin for displaying an interactive Tech Radar based on [Zalando's
 - 📱 **Responsive** - Works on desktop and mobile devices
 - 🔗 **Documentation links** - Click entries to view detailed documentation
 - 🎛️ **Flexible configuration** - Multiple radars per site with custom data sources
-- ⚡ **Client-side only** - No SSR issues, D3.js loaded from CDN
+- ⚡ **CDN-based loading** - D3.js v7 and Zalando radar.js loaded from CDN (no bundling)
+- 🛡️ **SSR safe** - Client-side only rendering prevents hydration issues
 
 ## Installation
 
