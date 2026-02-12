@@ -1,103 +1,268 @@
-# TSDX React Component Library
+# Docusaurus Tech Radar Plugin
 
-Zero-config React component library development powered by modern tools.
+A Docusaurus plugin for displaying an interactive Tech Radar based on [Zalando's Tech Radar](https://github.com/zalando/tech-radar) visualization.
 
-## Quick Start
+## Features
+
+- 🎯 **Interactive visualization** - Based on Zalando's proven D3.js radar
+- 🎨 **Docusaurus integration** - Seamless theming with Infima CSS variables
+- 🌓 **Dark mode support** - Automatic dark mode compatibility
+- 📱 **Responsive** - Works on desktop and mobile devices
+- 🔗 **Documentation links** - Click entries to view detailed documentation
+- 🎛️ **Flexible configuration** - Multiple radars per site with custom data sources
+- ⚡ **CDN-based loading** - D3.js v7 and Zalando radar.js loaded from CDN (no bundling)
+- 🛡️ **SSR safe** - Client-side only rendering prevents hydration issues
+
+## Installation
+
+```bash
+npm install docusaurus-techradar-plugin
+# or
+yarn add docusaurus-techradar-plugin
+```
+
+## Usage
+
+### 1. Configure the Plugin
+
+Add the plugin to your `docusaurus.config.js`:
+
+```javascript
+module.exports = {
+  plugins: [
+    [
+      'docusaurus-techradar-plugin',
+      {
+        radarFile: './data/tech-radar.json', // Required
+        width: 1450,                          // Optional, default: 1450
+        height: 1000,                         // Optional, default: 1000
+        radarVersion: '0.12',                 // Optional, default: '0.12'
+        colors: {                             // Optional
+          background: '#fff',
+          grid: '#bbb',
+          inactive: '#ddd',
+        },
+      },
+    ],
+  ],
+};
+```
+
+### 2. Create Your Radar Data
+
+Create a JSON file (e.g., `data/tech-radar.json`) with your radar data:
+
+```json
+{
+  "title": "Tech Radar 2026",
+  "quadrants": [
+    { "name": "Languages & Frameworks" },
+    { "name": "Tools" },
+    { "name": "Platforms" },
+    { "name": "Techniques" }
+  ],
+  "rings": [
+    { "name": "ADOPT", "color": "#5ba300" },
+    { "name": "TRIAL", "color": "#009eb0" },
+    { "name": "ASSESS", "color": "#c7ba00" },
+    { "name": "HOLD", "color": "#e09b96" }
+  ],
+  "entries": [
+    {
+      "label": "React",
+      "quadrant": 0,
+      "ring": 0,
+      "moved": 0,
+      "link": "/docs/frontend/react"
+    },
+    {
+      "label": "TypeScript",
+      "quadrant": 0,
+      "ring": 0,
+      "moved": 1,
+      "link": "/docs/languages/typescript"
+    }
+  ]
+}
+```
+
+### 3. Use in Your Pages
+
+There are two ways to use the TechRadar component:
+
+**Option 1: Via Docusaurus Theme (Recommended)**
+
+Import from the theme namespace (available after plugin is configured):
+
+```mdx
+---
+title: Our Tech Radar
+---
+
+import TechRadar from '@theme/TechRadar';
+
+# Our Technology Choices
+
+<TechRadar />
+```
+
+**Option 2: Direct Import**
+
+Import directly from the package:
+
+```mdx
+---
+title: Our Tech Radar
+---
+
+import TechRadar from 'docusaurus-techradar-plugin/TechRadar';
+
+# Our Technology Choices
+
+<TechRadar />
+```
+
+## Data Format
+
+### Quadrants
+
+Must have exactly 4 quadrants (top-right, top-left, bottom-left, bottom-right):
+
+```json
+{
+  "quadrants": [
+    { "name": "Languages & Frameworks" },
+    { "name": "Tools" },
+    { "name": "Platforms" },
+    { "name": "Techniques" }
+  ]
+}
+```
+
+### Rings
+
+1-4 rings representing maturity levels:
+
+```json
+{
+  "rings": [
+    { "name": "ADOPT", "color": "#5ba300" },
+    { "name": "TRIAL", "color": "#009eb0" },
+    { "name": "ASSESS", "color": "#c7ba00" },
+    { "name": "HOLD", "color": "#e09b96" }
+  ]
+}
+```
+
+### Entries
+
+Technologies/tools with their position:
+
+```json
+{
+  "entries": [
+    {
+      "label": "Technology Name",
+      "quadrant": 0,           // 0-3 (index in quadrants array)
+      "ring": 0,               // 0-N (index in rings array)
+      "moved": 0,              // -1 (out), 0 (no change), 1 (in), 2 (new)
+      "link": "/docs/tech"     // Optional link to documentation
+    }
+  ]
+}
+```
+
+## Advanced Usage
+
+### Multiple Radars
+
+You can display multiple radars with different data sources:
+
+```mdx
+import TechRadar from '@theme/TechRadar';
+
+## Frontend Radar
+<TechRadar source="/data/frontend-radar.json" />
+
+## Backend Radar
+<TechRadar source="/data/backend-radar.json" />
+```
+
+### Custom Dimensions
+
+Override dimensions per component:
+
+```mdx
+<TechRadar width={1200} height={800} />
+```
+
+### Custom Colors
+
+Override colors per component:
+
+```mdx
+<TechRadar
+  colors={{
+    background: '#f5f5f5',
+    grid: '#333',
+    inactive: '#999'
+  }}
+/>
+```
+
+## Configuration Options
+
+| Option     | Type   | Default | Description |
+|------------|--------|---------|-------------|
+| `radarFile` | string | Required | Path to the radar JSON file |
+| `width` | number | 1450 | Width of the radar visualization |
+| `height` | number | 1000 | Height of the radar visualization |
+| `radarVersion` | string | '0.12' | Zalando radar.js version to load from CDN |
+| `colors.background` | string | '#fff' | Background color |
+| `colors.grid` | string | '#bbb' | Grid lines color |
+| `colors.inactive` | string | '#ddd' | Inactive elements color |
+
+## Component Props
+
+The `<TechRadar />` component accepts these props:
+
+| Prop     | Type   | Description |
+|----------|--------|-------------|
+| `source` | string | Optional custom data source URL |
+| `width` | number | Override radar width |
+| `height` | number | Override radar height |
+| `colors` | object | Override color scheme |
+
+## Development
 
 ```bash
 # Install dependencies
-bun install
+npm install
 
-# Start development mode
-bun run dev
-
-# Build for production
-bun run build
+# Build the plugin
+npm run build
 
 # Run tests
-bun run test
+npm run test
 
-# Lint code
-bun run lint
+# Type check
+npm run typecheck
+
+# Lint
+npm run lint
 
 # Format code
-bun run format
+npm run format
 ```
 
-## Project Structure
+## Credits
 
-```
-/src
-  index.tsx       # Your component entry point
-/test
-  index.test.tsx  # Tests using Vitest + Testing Library
-/example
-  index.tsx       # Demo app using Vite
-.gitignore
-package.json
-README.md
-tsconfig.json
-vitest.config.ts
-```
-
-## Scripts
-
-| Script | Description |
-|--------|-------------|
-| `bun run dev` | Start development mode with watch |
-| `bun run build` | Build for production |
-| `bun run test` | Run tests |
-| `bun run test:watch` | Run tests in watch mode |
-| `bun run lint` | Lint code |
-| `bun run format` | Format code |
-| `bun run format:check` | Check if code is formatted |
-| `bun run typecheck` | Run TypeScript type checking |
-
-## Tools
-
-TSDX wraps these modern, high-performance tools:
-
-- **[Bunchee](https://github.com/huozhi/bunchee)** - Zero-config bundler for npm packages
-- **[Vitest](https://vitest.dev/)** - Next-generation testing framework
-- **[Testing Library](https://testing-library.com/)** - React testing utilities
-- **[Oxlint](https://oxc.rs/docs/guide/usage/linter.html)** - Rust-powered linter (50-100x faster than ESLint)
-- **[Oxfmt](https://oxc.rs/docs/guide/usage/formatter)** - Rust-powered formatter (35x faster than Prettier)
-- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
-
-## Development with Example
-
-To test your component in a real React app:
-
-```bash
-# In one terminal, start the library in watch mode
-bun run dev
-
-# In another terminal, run the example app
-cd example
-bun install
-bun run dev
-```
-
-## Module Formats
-
-This library exports both ESM and CommonJS formats, with full TypeScript support:
-
-- `dist/index.js` - ESM
-- `dist/index.cjs` - CommonJS
-- `dist/index.d.ts` - TypeScript declarations
-
-## Publishing
-
-```bash
-# Build the package
-bun run build
-
-# Publish to npm
-npm publish
-```
-
-We recommend using [np](https://github.com/sindresorhus/np) for publishing.
+This plugin uses the [Zalando Tech Radar](https://github.com/zalando/tech-radar) visualization, licensed under MIT.
 
 ## License
 
 MIT
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
