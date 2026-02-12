@@ -1,20 +1,39 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+# Project context
+context: |
+  Tech stack: TypeScript 5.x, React 18+, D3.js v7
+  Target: Docusaurus Plugin (v3.0+)
+  Build: TSDX (Bunchee bundler)
+  Test: Vitest + Testing Library
+  Lint/Format: Oxlint + Oxfmt (Rust-powered)
+  Node: >=20
+  
+  Domain: Tech Radar visualization plugin for Docusaurus documentation sites
+  
+  Conventions:
+  - Follow TypeScript 5.x + ES2022 guidelines (.github/instructions/typescript-5-es2022.instructions.md)
+  - Use conventional commits
+  - Components in src/theme/ (Docusaurus convention)
+  - Plugin entry in src/index.ts
+  - No SSR for D3.js components (client-side only)
+  
+  External dependencies:
+  - D3.js v7 loaded from CDN (not bundled)
+  - Inspired by Zalando tech-radar: https://github.com/zalando/tech-radar
+  - Uses Docusaurus Infima CSS framework
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+# Per-artifact rules
+rules:
+  proposal:
+    - Keep proposals focused and under 750 words
+    - Always include "Non-goals" section
+    - Reference related specs when applicable
+  design:
+    - Include component diagrams (ASCII art)
+    - Document client-side vs server-side concerns
+    - Consider Docusaurus plugin lifecycle
+  tasks:
+    - Break tasks into chunks of max 3 hours
+    - Tag tasks with components they affect
+    - Separate implementation from testing tasks
